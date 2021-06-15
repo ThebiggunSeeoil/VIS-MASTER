@@ -128,7 +128,7 @@
                         <td align="center">{{vis_detail.NOZZLE_Last_conn}}</td>
                         <td align="center">{{vis_detail.time_dif.day }} วัน {{vis_detail.time_dif.hour }} ชม {{vis_detail.time_dif.minutes }} นาที</td>
 <!--                        <td align="center">{% if vis_detail.VIS_last_time|date:"YmdHis" > now|date:"YmdHis" %} xx {% endif %}</td>-->
-                        <td align="center">{{vis_detail.NOZZLE_Battery_Status}}</td>
+                        <td align="center">{{vis_detail.NOZZLE_Battery_Status}}V.</td>
                         <td align="center">
                             <button type="button" rel="tooltip"
                                     title="ทีม : {{vis_detail.TEAM_ID}} คุณ : {{vis_detail.TEAM_NAME}}"
@@ -150,7 +150,7 @@
                         <td align="center">{{mwgt_detail.NOZZLE_Last_conn}}</td>
                         <td align="center">{{mwgt_detail.time_dif.day }} วัน {{mwgt_detail.time_dif.hour }} ชม {{mwgt_detail.time_dif.minutes }} นาที</td>
 <!--                        <td align="center">{% if vis_detail.VIS_last_time|date:"YmdHis" > now|date:"YmdHis" %} xx {% endif %}</td>-->
-                        <td align="center">{{mwgt_detail.NOZZLE_Battery_Status}}</td>
+                        <td align="center">{{mwgt_detail.NOZZLE_Battery_Status}}V.</td>
                         <td align="center">
                             <button type="button" rel="tooltip"
                                     title="ทีม : {{mwgt_detail.TEAM_ID}} คุณ : {{mwgt_detail.TEAM_NAME}}"
@@ -172,7 +172,7 @@
                         <td align="center">{{nozzle_detail.NOZZLE_Last_conn}}</td>
                         <td align="center">{{nozzle_detail.time_dif.day }} วัน {{nozzle_detail.time_dif.hour }} ชม {{nozzle_detail.time_dif.minutes }} นาที</td>
 <!--                        <td align="center">{% if vis_detail.VIS_last_time|date:"YmdHis" > now|date:"YmdHis" %} xx {% endif %}</td>-->
-                        <td align="center">{{nozzle_detail.NOZZLE_Battery_Status}}</td>
+                        <td align="center">{{nozzle_detail.NOZZLE_Battery_Status}}V.</td>
                         <td align="center">
                             <button type="button" rel="tooltip"
                                     title="ทีม : {{nozzle_detail.TEAM_ID}} คุณ : {{nozzle_detail.TEAM_NAME}}"
@@ -194,7 +194,7 @@
                         <td align="center">{{battery_detail.NOZZLE_Last_conn}}</td>
                         <td align="center">----</td>
 <!--                        <td align="center">{% if vis_detail.VIS_last_time|date:"YmdHis" > now|date:"YmdHis" %} xx {% endif %}</td>-->
-                        <td align="center" {% if battery_detail.NOZZLE_Battery_Status < battery_level_failed_volt %} class="text-danger" {% elif battery_detail.NOZZLE_Battery_Status <= battery_level_low_volt %} class="text-warning" {% endif %}">{{battery_detail.NOZZLE_Battery_Status}}</td>
+                        <td align="center" {% if battery_detail.NOZZLE_Battery_Status < battery_level_failed_volt %} class="text-danger" {% elif battery_detail.NOZZLE_Battery_Status <= battery_level_low_volt %} class="text-warning" {% endif %}">{{battery_detail.NOZZLE_Battery_Status}}V.</td>
                         <td align="center">
                             <button type="button" rel="tooltip"
                                     title="ทีม : {{battery_detail.TEAM_ID}} คุณ : {{battery_detail.TEAM_NAME}}"
@@ -354,7 +354,7 @@
                         <td align="center">OFF-LINE</td>
                         <td align="center">{{nozzle_detail.NOZZLE_pump_log_address}}</td>
                         <td align="center">{{nozzle_detail.NOZZLE_num}}</td>
-                        <td align="center">{{nozzle_detail.NOZZLE_Battery_Status}}</td>
+                        <td align="center">{{nozzle_detail.NOZZLE_Battery_Status}}V.</td>
                         <td align="center">{{nozzle_detail.NOZZLE_Last_conn}}</td>
                         <td align="center">{{nozzle_detail.time_dif.day }} วัน {{nozzle_detail.time_dif.hour }} ชม {{nozzle_detail.time_dif.minutes }} นาที</td>
 <!--                        <td align="center">{% if vis_detail.VIS_last_time|date:"YmdHis" > now|date:"YmdHis" %} xx {% endif %}</td>-->
@@ -406,7 +406,7 @@
                         <td align="center">{{battery_detail.type}}</td>
                         <td align="center">{{battery_detail.NOZZLE_pump_log_address}}</td>
                          <td align="center">{{battery_detail.NOZZLE_num}}</td>
-                        <td align="center" {% if battery_detail.NOZZLE_Battery_Status < battery_level_failed_volt %} class="text-danger" {% elif battery_detail.NOZZLE_Battery_Status < battery_level_low_volt %} class="text-warning" {% endif %}">{{battery_detail.NOZZLE_Battery_Status}}</td>
+                        <td align="center" {% if battery_detail.NOZZLE_Battery_Status < battery_level_failed_volt %} class="text-danger" {% elif battery_detail.NOZZLE_Battery_Status < battery_level_low_volt %} class="text-warning" {% endif %}">{{battery_detail.NOZZLE_Battery_Status}}V.</td>
                           <td align="center">{{battery_detail.NOZZLE_Last_conn}}</td>
                         <td align="center">
                             <button type="button" rel="tooltip"

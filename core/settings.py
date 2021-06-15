@@ -91,14 +91,29 @@ DATABASES = {
         'NAME': 'Monitoring_VIS',
         'USER': 'vismonitor',
         'PASSWORD': 'Thebiggun2524',
-        'HOST': '119.59.112.130,1433',
+        'HOST': 'WIN-HURQ95SLF1H\SQLEXPRESS',
         'PORT': '',
 
         'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
+            'driver': 'ODBC Driver 11 for SQL Server',
         },
     },
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'sql_server.pyodbc',
+#         'NAME': 'Monitoring_VIS',
+#         'USER': 'vismonitor',
+#         'PASSWORD': 'Thebiggun2524',
+#         'HOST': '119.59.112.130,1433',
+#         'PORT': '',
+
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#         },
+#     },
+# }
 
 # On widows use ODBC 13  xxxxxxxxxxxxxx
 # Password validation
