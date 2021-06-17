@@ -73,6 +73,11 @@ def callback(request):  # สำหรับส่งการแจ้งเต
                                 ReplyMessage(connect_data_to_db.RequestDataDBForTechnician(user_type,message))
                             if user_type.user_type.id != 6 : # กรณีเป็น user ทั่่วไปที่ไม่ใช่ technician
                                 ReplyMessage(connect_data_to_db.RequestDataDBForAllUser(user_type,message))
+                        elif message == 'TechGetAllStatus':
+                            if user_type.user_type.id == 6 : #6 คือ id ของ technician
+                                ReplyMessage(connect_data_to_db.RequestAllDataForTechnician(user_type,message))
+                            if user_type.user_type.id != 6 : # กรณีเป็น user ทั่่วไปที่ไม่ใช่ technician
+                                ReplyMessage(connect_data_to_db.RequestAllDataForAllUser(user_type,message))
                         elif message == 'register':
                             User_id = payloads['events'][0]['source']['userId']
                             # active_user = PersanalDetaillogin.objects.values('member_status').filter(line_id=User_id).first()

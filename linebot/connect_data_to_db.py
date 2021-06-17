@@ -115,6 +115,23 @@ class connect_data_to_db ():
         BATTERY_OFFLINE = Status.objects.filter(BATTERY_status_check='low', site__station_active=True).count()
         return creating_flex_messages.CreateFormAllStatusForMGR(dt,VIS_SUM_OFFLINE,MWGT_SUM_OFFLINE,NOZZLE_OFFLINE,BATTERY_OFFLINE,TOTAL_SITE_ACTIVE)
     
+    def RequestAllDataForTechnician(user_type,message):
+        dt = datetime.datetime.now().strftime("%d-%m-%d %H:%M")
+        VIS_SUM_OFFLINE = Status.objects.filter(VIS_status='offline',site__station_active=True,site__team_support=user_type.if_technician).values('DataUnitMap_IP').annotate(dcount=Count('DataUnitMap_IP')).count()
+        MWGT_SUM_OFFLINE = Status.objects.filter(MWGT_status='offline',site__station_active=True,site__team_support=user_type.if_technician).values('DataUnitMap_IP').annotate(dcount=Count('DataUnitMap_IP')).count()
+        TOTAL_SITE_ACTIVE = Site.objects.filter(station_active=True,team_support=user_type.if_technician).values('station_ip').annotate(dcount=Count('station_ip')).count()
+        NOZZLE_OFFLINE = Status.objects.filter(NOZZLE_status_check='offline',site__station_active=True,site__team_support=user_type.if_technician).count()
+        BATTERY_OFFLINE = Status.objects.filter(BATTERY_status_check='low', site__station_active=True,site__team_support=user_type.if_technician).count()
+        return creating_flex_messages.CreateFormAllStatusForFirstLevel(dt,VIS_SUM_OFFLINE,MWGT_SUM_OFFLINE,NOZZLE_OFFLINE,BATTERY_OFFLINE,TOTAL_SITE_ACTIVE,user_type)
+    def RequestAllDataForAllUser(user_type,message):
+        dt = datetime.datetime.now().strftime("%d-%m-%d %H:%M")
+        VIS_SUM_OFFLINE = Status.objects.filter(VIS_status='offline',site__station_active=True).values('DataUnitMap_IP').annotate(dcount=Count('DataUnitMap_IP')).count()
+        MWGT_SUM_OFFLINE = Status.objects.filter(MWGT_status='offline',site__station_active=True).values('DataUnitMap_IP').annotate(dcount=Count('DataUnitMap_IP')).count()
+        TOTAL_SITE_ACTIVE = Site.objects.filter(station_active=True).values('station_ip').annotate(dcount=Count('station_ip')).count()
+        NOZZLE_OFFLINE = Status.objects.filter(NOZZLE_status_check='offline',site__station_active=True).count()
+        BATTERY_OFFLINE = Status.objects.filter(BATTERY_status_check='low', site__station_active=True).count()
+        return creating_flex_messages.CreateFormAllStatusForFirstLevel(dt,VIS_SUM_OFFLINE,MWGT_SUM_OFFLINE,NOZZLE_OFFLINE,BATTERY_OFFLINE,TOTAL_SITE_ACTIVE,user_type)
+    
     def RequestDataDBForTechnician(user_type,message):
         VIS_SUM_OFFLINE = Status.objects.filter(VIS_status='offline',site__station_active=True,site__team_support=user_type.if_technician).values('DataUnitMap_IP').annotate(dcount=Count('DataUnitMap_IP')).count()
         MWGT_SUM_OFFLINE = Status.objects.filter(MWGT_status='offline',site__station_active=True,site__team_support=user_type.if_technician).values('DataUnitMap_IP').annotate(dcount=Count('DataUnitMap_IP')).count()
