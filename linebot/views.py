@@ -47,31 +47,30 @@ def callback(request):  # สำหรับส่งการแจ้งเต
                     payload['events'].insert(-1, payload_check)
                     if payload['events'][0]['type'] == 'postback':
                         message = payload['events'][0]['postback']['data']
+                        User_id = payloads['events'][0]['source']['userId']
+                        user_type = PersanalDetaillogin.objects.filter(line_id=User_id).first()
                         if message == 'new_register':
                             ReplyMessage(line_templates.register_code())
                         elif message == 'GetAllStatus':
                             ReplyMessage(connect_data_to_db.RequestDataDBForMGR())
                         elif message == 'vis_status':
-                            User_id = payloads['events'][0]['source']['userId']
-                            user_type = PersanalDetaillogin.objects.filter(line_id=User_id).first()
                             if user_type.user_type.id == 6 : #6 คือ id ของ technician
                                 ReplyMessage(connect_data_to_db.RequestDataDBForTechnician(user_type,message))
                             if user_type.user_type.id != 6 : # กรณีเป็น user ทั่่วไปที่ไม่ใช่ technician
                                 ReplyMessage(connect_data_to_db.RequestDataDBForAllUser(user_type,message))
                         elif message == 'mwgt_status':
-                            User_id = payloads['events'][0]['source']['userId']
-                            user_type = PersanalDetaillogin.objects.filter(line_id=User_id).first()
                             if user_type.user_type.id == 6 : #6 คือ id ของ technician
                                 ReplyMessage(connect_data_to_db.RequestDataDBForTechnician(user_type,message))
-                                print ('go to next')
                             if user_type.user_type.id != 6 : # กรณีเป็น user ทั่่วไปที่ไม่ใช่ technician
                                 ReplyMessage(connect_data_to_db.RequestDataDBForAllUser(user_type,message))
                         elif message == 'nozzle_status':
-                            User_id = payloads['events'][0]['source']['userId']
-                            user_type = PersanalDetaillogin.objects.filter(line_id=User_id).first()
                             if user_type.user_type.id == 6 : #6 คือ id ของ technician
                                 ReplyMessage(connect_data_to_db.RequestDataDBForTechnician(user_type,message))
-                                print ('go to next')
+                            if user_type.user_type.id != 6 : # กรณีเป็น user ทั่่วไปที่ไม่ใช่ technician
+                                ReplyMessage(connect_data_to_db.RequestDataDBForAllUser(user_type,message))
+                        elif message == 'battery_status':
+                            if user_type.user_type.id == 6 : #6 คือ id ของ technician
+                                ReplyMessage(connect_data_to_db.RequestDataDBForTechnician(user_type,message))
                             if user_type.user_type.id != 6 : # กรณีเป็น user ทั่่วไปที่ไม่ใช่ technician
                                 ReplyMessage(connect_data_to_db.RequestDataDBForAllUser(user_type,message))
                         elif message == 'register':

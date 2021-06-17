@@ -118,9 +118,9 @@ class connect_data_to_db ():
     def RequestDataDBForTechnician(user_type,message):
         VIS_SUM_OFFLINE = Status.objects.filter(VIS_status='offline',site__station_active=True,site__team_support=user_type.if_technician).values('DataUnitMap_IP').annotate(dcount=Count('DataUnitMap_IP')).count()
         MWGT_SUM_OFFLINE = Status.objects.filter(MWGT_status='offline',site__station_active=True,site__team_support=user_type.if_technician).values('DataUnitMap_IP').annotate(dcount=Count('DataUnitMap_IP')).count()
-        if message == 'nozzle_status' :
+        if message in ('nozzle_status','battery_status') :
             TOTAL_SITE_ACTIVE = Nozzle.objects.filter(site__station_active=True,active_nozzle=True,site__team_support=user_type.if_technician).values('id').count()
-        if message != 'nozzle_status' :
+        if message not in ('nozzle_status','battery_status') :
             TOTAL_SITE_ACTIVE = Site.objects.filter(station_active=True,team_support=user_type.if_technician).values('station_ip').annotate(dcount=Count('station_ip')).count()
         MWGT_LAST_OFFLINE = Status.objects.filter(MWGT_status='offline',site__station_active=True).latest('Timestramp')
         NOZZLE_OFFLINE = Status.objects.filter(NOZZLE_status_check='offline',site__station_active=True,site__team_support=user_type.if_technician).count()
@@ -183,8 +183,8 @@ class connect_data_to_db ():
             battery_result.append({'name':data.site,'ip_address':data.site.station_ip,'type':'BATT',
                                 'NOZZLE_Last_conn':data.NOZZLE_Last_conn,'time_dif':{'day':time_def_check[0],'hour':time_def_check[1],'minutes':time_def_check[2],'hours_deff':time_def_check[3]},
                                 'NOZZLE_Battery_Status':data.NOZZLE_Battery_Status_Volts ,
-                                    'TEAM_ID':data.site.team_support.team ,
-                                        'TEAM_NAME': data.site.team_support.team_name , 'NOZZLE_pump_log_address':data.NOZZLE_pump_log_address , 'NOZZLE_num':data.NOZZLE_num , 'TIME_UPDATE':timezone.now()})
+                                    'TEAM_ID':data.site.team_support.team ,'BATTERY_status_check':data.BATTERY_status_check,'NOZZLE_SN':data.NOZZLE_SN,
+                                        'NOZZLE_Battery_Status_Volts':data.NOZZLE_Battery_Status_Volts,'TEAM_NAME': data.site.team_support.team_name , 'NOZZLE_pump_log_address':data.NOZZLE_pump_log_address , 'NOZZLE_num':data.NOZZLE_num , 'TIME_UPDATE':timezone.now()})
             # print('mwgt_result',battery_result)
         data = {'user_type':user_type,'TIME_UPDATE':timezone.now(),'VIS_SUM_OFFLINE':VIS_SUM_OFFLINE,'MWGT_SUM_OFFLINE':MWGT_SUM_OFFLINE,
                                                 'TOTAL_SITE_ACTIVE':TOTAL_SITE_ACTIVE,'MWGT_LAST_OFFLINE':MWGT_LAST_OFFLINE,'NOZZLE_OFFLINE':NOZZLE_OFFLINE,
@@ -198,13 +198,15 @@ class connect_data_to_db ():
             return creating_flex_messages.CreateFormMwgtFlexMessageDetail(data,user_type)
         elif message == 'nozzle_status':
             return creating_flex_messages.CreateFormNozzleFlexMessageDetail(data,user_type)
+        elif message == 'battery_status':
+            return creating_flex_messages.CreateFormBatteryFlexMessageDetail(data,user_type)
     
     def RequestDataDBForAllUser(user_type,message):
         VIS_SUM_OFFLINE = Status.objects.filter(VIS_status='offline',site__station_active=True).values('DataUnitMap_IP').annotate(dcount=Count('DataUnitMap_IP')).count()
         MWGT_SUM_OFFLINE = Status.objects.filter(MWGT_status='offline',site__station_active=True).values('DataUnitMap_IP').annotate(dcount=Count('DataUnitMap_IP')).count()
-        if message == 'nozzle_status' :
+        if message in ('nozzle_status','battery_status') :
             TOTAL_SITE_ACTIVE = Nozzle.objects.filter(site__station_active=True,active_nozzle=True,).values('id').count()
-        if message != 'nozzle_status' :
+        if message not in ('nozzle_status','battery_status') :
             TOTAL_SITE_ACTIVE = Site.objects.filter(station_active=True).values('station_ip').annotate(dcount=Count('station_ip')).count()
         MWGT_LAST_OFFLINE = Status.objects.filter(MWGT_status='offline',site__station_active=True).latest('Timestramp')
         MWGT_LAST_OFFLINE = Status.objects.filter(MWGT_status='offline',site__station_active=True).latest('Timestramp')
@@ -215,7 +217,7 @@ class connect_data_to_db ():
         GET_VIS_DATA = Status.objects.select_related('site').filter(VIS_status='offline',site__station_active=True)
         GET_MWGT_DATA = Status.objects.select_related('site').filter(MWGT_status='offline', site__station_active=True)
         GET_NOZZLE_DATA = Status.objects.select_related('site').filter(NOZZLE_status_check='offline', site__station_active=True)
-        GET_BATTERY_DATA = Status.objects.select_related('site').filter(BATTERY_status_check='low',site__station_active=True,site__team_support=user_type.if_technician)
+        GET_BATTERY_DATA = Status.objects.select_related('site').filter(BATTERY_status_check='low',site__station_active=True)
         STATUS_CONFIG = Setup_Config.objects.values()
         for setup_config in STATUS_CONFIG :
             time_alert_alarm_hours = setup_config['time_alert_alarm_hours']
@@ -266,8 +268,8 @@ class connect_data_to_db ():
             time_def_check = connect_data_to_db.different_time_calculate(timezone.now(),data.MWGT_last_time)
             battery_result.append({'name':data.site,'ip_address':data.site.station_ip,'type':'BATT',
                                 'NOZZLE_Last_conn':data.NOZZLE_Last_conn,'time_dif':{'day':time_def_check[0],'hour':time_def_check[1],'minutes':time_def_check[2],'hours_deff':time_def_check[3]},
-                                'NOZZLE_Battery_Status':data.NOZZLE_Battery_Status_Volts ,
-                                    'TEAM_ID':data.site.team_support.team ,
+                                'NOZZLE_Battery_Status':data.NOZZLE_Battery_Status_Volts ,'NOZZLE_SN':data.NOZZLE_SN,
+                                    'TEAM_ID':data.site.team_support.team , 'BATTERY_status_check':data.BATTERY_status_check,'NOZZLE_Battery_Status_Volts':data.NOZZLE_Battery_Status_Volts,
                                         'TEAM_NAME': data.site.team_support.team_name , 'NOZZLE_pump_log_address':data.NOZZLE_pump_log_address , 'NOZZLE_num':data.NOZZLE_num , 'TIME_UPDATE':timezone.now()})
             # print('mwgt_result',battery_result)
         data = {'user_type':user_type,'TIME_UPDATE':timezone.now(),'VIS_SUM_OFFLINE':VIS_SUM_OFFLINE,'MWGT_SUM_OFFLINE':MWGT_SUM_OFFLINE,
@@ -282,3 +284,5 @@ class connect_data_to_db ():
             return creating_flex_messages.CreateFormMwgtFlexMessageDetail(data,user_type)
         elif message == 'nozzle_status':
             return creating_flex_messages.CreateFormNozzleFlexMessageDetail(data,user_type)
+        elif message == 'battery_status':
+            return creating_flex_messages.CreateFormBatteryFlexMessageDetail(data,user_type)

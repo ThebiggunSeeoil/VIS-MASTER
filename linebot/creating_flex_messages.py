@@ -210,27 +210,27 @@ class creating_flex_messages():
 
                 }}
         return data
-    
-    def CreateFormVisFlexMessageDetail(data,user_type):
-        if user_type.user_type.id == 6 :
+
+    def CreateFormVisFlexMessageDetail(data, user_type):
+        if user_type.user_type.id == 6:
             content_tech = {
-                                        "type": "text",
-                                        "text": 'ทีมงาน : ' + str(data['user_type'].if_technician.team) + ' คุณ : ' + str(data['user_type'].if_technician.team_name),
-                                        "weight": "bold",
-                                        "align": "center",
-                                        "margin": "xs",
-                                        "contents": []
-                                    }
-        if user_type.user_type.id != 6 :
+                "type": "text",
+                "text": 'ทีมงาน : ' + str(data['user_type'].if_technician.team) + ' คุณ : ' + str(data['user_type'].if_technician.team_name),
+                "weight": "bold",
+                "align": "center",
+                "margin": "xs",
+                "contents": []
+            }
+        if user_type.user_type.id != 6:
             content_tech = {
-                                        "type": "text",
-                                        "text": '-',
-                                        "weight": "bold",
-                                        "align": "center",
-                                        "margin": "xs",
-                                        "contents": []
-                                    }
-            
+                "type": "text",
+                "text": '-',
+                "weight": "bold",
+                "align": "center",
+                "margin": "xs",
+                "contents": []
+            }
+
         content = {
             "type": "carousel",
             "contents": [
@@ -941,26 +941,26 @@ class creating_flex_messages():
                 "altText": "Flex Message",
                 "contents": content}
         return data
-    
-    def CreateFormMwgtFlexMessageDetail(data,user_type):
-        if user_type.user_type.id == 6 :
+
+    def CreateFormMwgtFlexMessageDetail(data, user_type):
+        if user_type.user_type.id == 6:
             content_tech = {
-                                        "type": "text",
-                                        "text": 'ทีมงาน : ' + str(data['user_type'].if_technician.team) + ' คุณ : ' + str(data['user_type'].if_technician.team_name),
-                                        "weight": "bold",
-                                        "align": "center",
-                                        "margin": "xs",
-                                        "contents": []
-                                    }
-        if user_type.user_type.id != 6 :
+                "type": "text",
+                "text": 'ทีมงาน : ' + str(data['user_type'].if_technician.team) + ' คุณ : ' + str(data['user_type'].if_technician.team_name),
+                "weight": "bold",
+                "align": "center",
+                "margin": "xs",
+                "contents": []
+            }
+        if user_type.user_type.id != 6:
             content_tech = {
-                                        "type": "text",
-                                        "text": '-',
-                                        "weight": "bold",
-                                        "align": "center",
-                                        "margin": "xs",
-                                        "contents": []
-                                    }
+                "type": "text",
+                "text": '-',
+                "weight": "bold",
+                "align": "center",
+                "margin": "xs",
+                "contents": []
+            }
         content = {
             "type": "carousel",
             "contents": [
@@ -1498,7 +1498,7 @@ class creating_flex_messages():
             content['contents'][1]['body']['contents'].insert(-2, content_1)
         elif len(data['MWTG_DETAIL']) > 0:
             for ip_address in data['MWTG_DETAIL']:
-                print (ip_address)
+                print(ip_address)
                 content_1 = {
                     "type": "box",
                     "layout": "baseline",
@@ -1672,26 +1672,26 @@ class creating_flex_messages():
                 "altText": "Flex Message",
                 "contents": content}
         return data
-    
-    def CreateFormNozzleFlexMessageDetail(data,user_type):
-        if user_type.user_type.id == 6 :
+
+    def CreateFormNozzleFlexMessageDetail(data, user_type):
+        if user_type.user_type.id == 6:
             content_tech = {
-                                        "type": "text",
-                                        "text": 'ทีมงาน : ' + str(data['user_type'].if_technician.team) + ' คุณ : ' + str(data['user_type'].if_technician.team_name),
-                                        "weight": "bold",
-                                        "align": "center",
-                                        "margin": "xs",
-                                        "contents": []
-                                    }
-        if user_type.user_type.id != 6 :
+                "type": "text",
+                "text": 'ทีมงาน : ' + str(data['user_type'].if_technician.team) + ' คุณ : ' + str(data['user_type'].if_technician.team_name),
+                "weight": "bold",
+                "align": "center",
+                "margin": "xs",
+                "contents": []
+            }
+        if user_type.user_type.id != 6:
             content_tech = {
-                                        "type": "text",
-                                        "text": '-',
-                                        "weight": "bold",
-                                        "align": "center",
-                                        "margin": "xs",
-                                        "contents": []
-                                    }
+                "type": "text",
+                "text": '-',
+                "weight": "bold",
+                "align": "center",
+                "margin": "xs",
+                "contents": []
+            }
         content = {
             "type": "carousel",
             "contents": [
@@ -1777,7 +1777,7 @@ class creating_flex_messages():
                                     },
                                     {
                                         "type": "text",
-                                        "text": "OnLine",
+                                        "text": "Normal",
                                         "weight": "bold",
                                         "size": "md",
                                         "align": "center",
@@ -1785,7 +1785,7 @@ class creating_flex_messages():
                                     },
                                     {
                                         "type": "text",
-                                        "text": "OffLine",
+                                        "text": "Low",
                                         "weight": "bold",
                                         "size": "md",
                                         "align": "center",
@@ -2229,7 +2229,7 @@ class creating_flex_messages():
             content['contents'][1]['body']['contents'].insert(-2, content_1)
         elif len(data['NOZZLE_DETAIL']) > 0:
             for ip_address in data['NOZZLE_DETAIL']:
-                print (ip_address)
+                print(ip_address)
                 content_1 = {
                     "type": "box",
                     "layout": "baseline",
@@ -2246,7 +2246,7 @@ class creating_flex_messages():
                         },
                         {
                             "type": "text",
-                            "text": str('Log : ' +ip_address['Unit_log_address'] + ' หน้า ' +ip_address['NOZZLE_pump_log_address'] + '/'+ip_address['NOZZLE_num']),
+                            "text": str('Log : ' + ip_address['Unit_log_address'] + ' หน้า ' + ip_address['NOZZLE_pump_log_address'] + '/'+ip_address['NOZZLE_num']),
                             "weight": "bold",
                             "size": "xs",
                             "color": "#EC1019FF",
@@ -2403,3 +2403,735 @@ class creating_flex_messages():
                 "altText": "Flex Message",
                 "contents": content}
         return data
+
+    def CreateFormBatteryFlexMessageDetail(data, user_type):
+        if user_type.user_type.id == 6:
+            content_tech = {
+                "type": "text",
+                "text": 'ทีมงาน : ' + str(data['user_type'].if_technician.team) + ' คุณ : ' + str(data['user_type'].if_technician.team_name),
+                "weight": "bold",
+                "align": "center",
+                "margin": "xs",
+                "contents": []
+            }
+        if user_type.user_type.id != 6:
+            content_tech = {
+                "type": "text",
+                "text": '-',
+                "weight": "bold",
+                "align": "center",
+                "margin": "xs",
+                "contents": []
+            }
+        content = {
+            "type": "carousel",
+            "contents": [
+                # ชุดที่ 1
+                {
+                    "type": "bubble",
+                    "hero": {
+                        "type": "image",
+                        "url": "https://seeoil-web.com/picture_logo/VIS-MONITOR/vis.png",
+                        "align": "center",
+                        "gravity": "bottom",
+                        "size": "full",
+                        "aspectRatio": "35:8",
+                        "aspectMode": "fit",
+                        "action": {
+                            "type": "uri",
+                            "label": "Line",
+                            "uri": "https://linecorp.com/"
+                        },
+                        "position": "relative"
+                    },
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "BATTERY : STATUS",
+                                "weight": "bold",
+                                "size": "xl",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "gravity": "center",
+                                "contents": []
+                            },
+                            {
+                                "type": "text",
+                                "text": str(data['TIME_UPDATE'].strftime("%d.%m.%Y %H:%M")),
+                                "weight": "bold",
+                                "size": "lg",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "gravity": "center",
+                                "contents": []
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm",
+                                "color": "#165C3CFF"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "sm",
+                                "margin": "lg",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "รายละเอียดสถานะ",
+                                        "weight": "bold",
+                                        "size": "lg",
+                                        "align": "center",
+                                        "gravity": "center",
+                                        "contents": []
+                                    },
+                                    content_tech,
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "margin": "xs",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "Deive",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "center",
+                                        "gravity": "center",
+                                        "contents": []
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "Normal",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "center",
+                                        "contents": []
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "Low",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "center",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "margin": "xs",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "BATTERY",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "center",
+                                        "contents": []
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": str(int(data['TOTAL_SITE_ACTIVE']) - int(data['BATTERY_OFFLINE'])),
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "center",
+                                        "contents": []
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": str(data['BATTERY_OFFLINE']),
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "center",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "md",
+                                "color": "#165C3CFF"
+                            },
+                            {
+                                "type": "text",
+                                "text": "Total Online " + str(data['TOTAL_SITE_ACTIVE']) + ' ' + " Battery",
+                                "weight": "bold",
+                                "size": "lg",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "gravity": "bottom",
+                                "margin": "xxl",
+                                "contents": []
+                            }
+                        ]
+                    },
+                    "footer": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 0,
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "uri",
+                                    "label": "www.orpak.com",
+                                    "uri": "https://www.orpak.com/"
+                                },
+                                "color": "#078025FF",
+                                "margin": "none",
+                                "height": "sm",
+                                "style": "secondary"
+                            },
+                            {
+                                "type": "spacer",
+                                "size": "sm"
+                            }
+                        ]
+                    }
+                },
+                # ชุดที่ 2
+                {
+                    "type": "bubble",
+                    "hero": {
+                        "type": "image",
+                        "url": "https://seeoil-web.com/picture_logo/VIS-MONITOR/vis.png",
+                        "align": "center",
+                        "gravity": "bottom",
+                        "size": "full",
+                        "aspectRatio": "35:8",
+                        "aspectMode": "fit",
+                        "action": {
+                            "type": "uri",
+                            "label": "Line",
+                            "uri": "https://linecorp.com/"
+                        },
+                        "position": "relative"
+                    },
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "BATTERY : STATUS",
+                                "weight": "bold",
+                                "size": "xl",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "gravity": "bottom",
+                                "contents": []
+                            },
+                            {
+                                "type": "text",
+                                "text": str(data['TIME_UPDATE'].strftime("%d.%m.%Y %H:%M")),
+                                "weight": "bold",
+                                "size": "lg",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "gravity": "bottom",
+                                "contents": []
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm",
+                                "color": "#165C3CFF"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "sm",
+                                "margin": "lg",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "รายละเอียดอุปกรณ์ BATTERY",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "center",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "margin": "xs",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "สถานี",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "start",
+                                        "contents": []
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "BatterySts",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "end",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            # ส่วนแสดงรายละเอียดสถานี
+                            {
+                                "type": "separator",
+                                "margin": "md",
+                                "color": "#165C3CFF"
+                            },
+                            {
+                                "type": "text",
+                                "text": "รายละเอีดดอื่น สามารถกดที่ BatterySts ที่ต้องการระบบจะจัดส่งรายละเอียดอื่นให้เพิ่มเติม",
+                                "weight": "bold",
+                                "size": "sm",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "margin": "xxl",
+                                "wrap": True,
+                                "contents": []
+                            }
+                        ]
+                    }
+                },
+                # ชุดที่ 3
+                {
+                    "type": "bubble",
+                    "hero": {
+                        "type": "image",
+                        "url": "https://seeoil-web.com/picture_logo/VIS-MONITOR/vis.png",
+                        "align": "center",
+                        "gravity": "bottom",
+                        "size": "full",
+                        "aspectRatio": "35:8",
+                        "aspectMode": "fit",
+                        "action": {
+                            "type": "uri",
+                            "label": "Line",
+                            "uri": "https://linecorp.com/"
+                        },
+                        "position": "relative"
+                    },
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "BATTERY : STATUS",
+                                "weight": "bold",
+                                "size": "xl",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "gravity": "bottom",
+                                "contents": []
+                            },
+                            {
+                                "type": "text",
+                                "text": str(data['TIME_UPDATE'].strftime("%d.%m.%Y %H:%M")),
+                                "weight": "bold",
+                                "size": "lg",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "gravity": "bottom",
+                                "contents": []
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm",
+                                "color": "#165C3CFF"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "sm",
+                                "margin": "lg",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "รายละเอียดอุปกรณ์ BATTERY",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "center",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "margin": "xs",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "สถานี",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "start",
+                                        "contents": []
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "BatterySN",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "end",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            # ส่วนแสดงข้อมูลสถานี
+
+
+                            {
+                                "type": "separator",
+                                "margin": "md",
+                                "color": "#165C3CFF"
+                            },
+                            {
+                                "type": "text",
+                                "text": "รายละเอีดดอื่น สามารถกดที่ BatterySN ที่ต้องการระบบจะจัดส่งรายละเอียดอื่นให้เพิ่มเติม",
+                                "weight": "bold",
+                                "size": "sm",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "margin": "xxl",
+                                "wrap": True,
+                                "contents": []
+                            }
+                        ]
+                    }
+                },
+                # ชุดที่ 4
+                {
+                    "type": "bubble",
+                    "hero": {
+                        "type": "image",
+                        "url": "https://seeoil-web.com/picture_logo/VIS-MONITOR/vis.png",
+                        "align": "center",
+                        "gravity": "bottom",
+                        "size": "full",
+                        "aspectRatio": "35:8",
+                        "aspectMode": "fit",
+                        "action": {
+                            "type": "uri",
+                            "label": "Line",
+                            "uri": "https://linecorp.com/"
+                        },
+                        "position": "relative"
+                    },
+                    "body": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "BATTERY : STATUS",
+                                "weight": "bold",
+                                "size": "xl",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "gravity": "bottom",
+                                "contents": []
+                            },
+                            {
+                                "type": "text",
+                                "text": str(data['TIME_UPDATE'].strftime("%d.%m.%Y %H:%M")),
+                                "weight": "bold",
+                                "size": "lg",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "gravity": "bottom",
+                                "contents": []
+                            },
+                            {
+                                "type": "separator",
+                                "margin": "sm",
+                                "color": "#165C3CFF"
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "spacing": "sm",
+                                "margin": "lg",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "รายละเอียดอุปกรณ์ NOZZLE",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "center",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "margin": "xs",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "สถานี",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "start",
+                                        "contents": []
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "BatteryVT",
+                                        "weight": "bold",
+                                        "size": "md",
+                                        "align": "end",
+                                        "contents": []
+                                    }
+                                ]
+                            },
+                            # ส่วนแสดงข้อมูล
+
+                            {
+                                "type": "separator",
+                                "margin": "md",
+                                "color": "#165C3CFF"
+                            },
+                            {
+                                "type": "text",
+                                "text": "รายละเอีดดอื่น สามารถกดที่ BatteryVT ที่ต้องการระบบจะจัดส่งรายละเอียดอื่นให้เพิ่มเติม",
+                                "weight": "bold",
+                                "size": "sm",
+                                "color": "#225508FF",
+                                "align": "center",
+                                "margin": "xxl",
+                                "wrap": True,
+                                "contents": []
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+        # ส่วนแสดงที่ loop 1
+        if len(data['BATTERY_DETAIL']) <= 0:
+            content_1 = {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "sm",
+                "margin": "md",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": '-',
+                        "weight": "bold",
+                        "size": "xs",
+                        "align": "start",
+                        "contents": []
+                    },
+                    {
+                        "type": "text",
+                        "text": '-',
+                        "weight": "bold",
+                        "size": "xs",
+                        "color": "#EC1019FF",
+                        "align": "end",
+                        "action": {
+                            "type": "postback",
+                            "text": "ไม่พบรายงาน",
+                            "data": 'ไม่พบรายงาน'
+                        },
+                        "contents": []
+                    }
+                ]
+            }
+            content['contents'][1]['body']['contents'].insert(-2, content_1)
+        elif len(data['BATTERY_DETAIL']) > 0:
+            for ip_address in data['BATTERY_DETAIL']:
+                print(ip_address)
+                content_1 = {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "margin": "md",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": str(ip_address['name']),
+                            "weight": "bold",
+                            "size": "xs",
+                            "align": "start",
+                            "contents": []
+                        },
+                        {
+                            "type": "text",
+                            "text": str(ip_address['BATTERY_status_check']),
+                            "weight": "bold",
+                            "size": "xs",
+                            "color": "#EC1019FF",
+                            "align": "end",
+                            "action": {
+                                "type": "postback",
+                                "text": "กำลังจัดส่งรายละเอียด",
+                                "data": "check"+str(ip_address['ip_address'])
+                            },
+                            "contents": []
+                        }
+                    ]
+                }
+                content['contents'][1]['body']['contents'].insert(
+                    -2, content_1)
+
+        # ส่วนแสดงที่ loop 2
+        if len(data['BATTERY_DETAIL']) <= 0:
+            content_2 = {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "sm",
+                "margin": "md",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": '-',
+                        "weight": "bold",
+                        "size": "xs",
+                        "align": "start",
+                        "contents": []
+                    },
+                    {
+                        "type": "text",
+                        "text": '-',
+                        "weight": "bold",
+                        "size": "xs",
+                        "color": "#EC1019FF",
+                        "align": "end",
+                        "action": {
+                            "type": "postback",
+                            "text": "ไม่พบรายงาน",
+                            "data": 'ไม่พบรายงาน'
+                        },
+                        "contents": []
+                    }
+                ]
+            }
+            content['contents'][2]['body']['contents'].insert(-2, content_2)
+        elif len(data['BATTERY_DETAIL']) > 0:
+            for ip_address in data['BATTERY_DETAIL']:
+                content_2 = {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "margin": "md",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": str(ip_address['name']),
+                            "weight": "bold",
+                            "size": "xs",
+                            "align": "start",
+                            "contents": []
+                        },
+                        {
+                            "type": "text",
+                            "text": str(ip_address['NOZZLE_SN']),
+                            "weight": "bold",
+                            "size": "xs",
+                            "color": "#EC1019FF",
+                            "align": "end",
+                            "action": {
+                                "type": "postback",
+                                "text": "กำลังจัดส่งรายละเอียด",
+                                "data": "check"+str(ip_address['ip_address'])
+                            },
+                            "contents": []
+                        }
+                    ]
+                }
+                content['contents'][2]['body']['contents'].insert(
+                    -2, content_2)
+
+        # ส่วนแสดงที่ loop 3
+        if len(data['BATTERY_DETAIL']) <= 0:
+            content_3 = {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "sm",
+                "margin": "md",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": '-',
+                        "weight": "bold",
+                        "size": "xs",
+                        "align": "start",
+                        "contents": []
+                    },
+                    {
+                        "type": "text",
+                        "text": '-',
+                        "weight": "bold",
+                        "size": "xs",
+                        "color": "#EC1019FF",
+                        "align": "end",
+                        "action": {
+                            "type": "postback",
+                            "text": "ไม่พบรายงาน",
+                            "data": 'ไม่พบรายงาน'
+                        },
+                        "contents": []
+                    }
+                ]
+            }
+            content['contents'][3]['body']['contents'].insert(-2, content_3)
+        elif len(data['BATTERY_DETAIL']) > 0:
+            for ip_address in data['BATTERY_DETAIL']:
+                content_3 = {
+                    "type": "box",
+                    "layout": "baseline",
+                    "spacing": "sm",
+                    "margin": "md",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": str(ip_address['name']),
+                            "weight": "bold",
+                            "size": "xs",
+                            "align": "start",
+                            "contents": []
+                        },
+                        {
+                            "type": "text",
+                            "text": str(ip_address['NOZZLE_Battery_Status_Volts']),
+                            "weight": "bold",
+                            "size": "xs",
+                            "color": "#EC1019FF",
+                            "align": "end",
+                            "action": {
+                                "type": "postback",
+                                "text": "กำลังจัดส่งรายละเอียด",
+                                "data": "check"+str(ip_address['ip_address'])
+                            },
+                            "contents": []
+                        }
+                    ]
+                }
+                content['contents'][3]['body']['contents'].insert(
+                    -2, content_3)
+
+        data = {"type": "flex",
+                "altText": "Flex Message",
+                "contents": content}
+        return data
+        
